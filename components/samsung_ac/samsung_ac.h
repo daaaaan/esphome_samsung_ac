@@ -80,6 +80,12 @@ namespace esphome
           dev->update_outdoor_temperature(value);
       }
 
+      void /*MessageTarget::*/ getValueForCustomClimate(const std::string source, uint16_t messageNumber, long value) {
+        Samsung_AC_Device *dev = find_device(source);
+        if (dev != nullptr) dev->getValueForCustomClimate(messageNumber, value);
+
+      }
+
       void /*MessageTarget::*/ set_target_temperature(const std::string address, float value) override
       {
         Samsung_AC_Device *dev = find_device(address);
@@ -143,8 +149,7 @@ namespace esphome
         if (dev != nullptr)
           dev->update_custom_sensor(message_number, value);
       }
-
-    protected:
+      
       Samsung_AC_Device *find_device(const std::string address)
       {
         auto it = devices_.find(address);
@@ -154,6 +159,8 @@ namespace esphome
         }
         return nullptr;
       }
+
+    protected:
 
       std::map<std::string, Samsung_AC_Device *> devices_;
       std::set<std::string> addresses_;
