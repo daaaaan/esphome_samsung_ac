@@ -384,7 +384,7 @@ async def to_code(config):
             num = await number.new_number(conf,
                                           min_value=16.0,
                                           max_value=30.0,
-                                          step=1.0)
+                                          step=0.5)
             cg.add(var_dev.set_target_temperature_number(num))
 
         if CONF_DEVICE_MODE in device:
