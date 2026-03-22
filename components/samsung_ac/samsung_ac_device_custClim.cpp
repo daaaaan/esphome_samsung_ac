@@ -14,7 +14,7 @@ namespace esphome
     climate::ClimateTraits Samsung_AC_CustClim::traits() {
     auto traits = climate::ClimateTraits();
   
-    traits.set_supports_current_temperature(true);
+    traits.add_feature_flags(climate::CLIMATE_SUPPORTS_CURRENT_TEMPERATURE);
     traits.set_visual_temperature_step(1);
     traits.set_visual_min_temperature(setMin);
     traits.set_visual_max_temperature(setMax);
